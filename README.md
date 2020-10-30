@@ -3,7 +3,8 @@ flask api that runs in google cloud functions for recomed recruitment assignment
 
 * Done: simple logic to get request parameters
 
-* TODO: figure out public holidays 
+* TODO: figure out ISO-8601 date comparison
+* TODO: figure out public holidays dynamically
 * TODO: calculate business seconds
 * TODO: automated testing
 * TODO: automated deployment
