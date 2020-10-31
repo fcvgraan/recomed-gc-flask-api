@@ -1,0 +1,1 @@
+gcloud functions deploy calculate-business-seconds-test --entry-point http_trigger --runtime python37 --trigger-http --allow-unauthenticated
