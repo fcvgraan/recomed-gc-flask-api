@@ -2,6 +2,7 @@ import datetime
 import pytz
 import businesstimedelta
 import holidays as pyholidays
+import dateutil.parser
 
 def http_trigger(request):
     """ HTTP Cloud Function
@@ -11,10 +12,13 @@ def http_trigger(request):
     start_time = request.args.get('start_time')
     end_time = request.args.get('end_time')
 
-    diff = calculateBusinessTime()
-    return 'diff is: {}'.format(diff)
+    startParsed = dateutil.parser.parse(start_time)
+    endParsed = dateutil.parser.parse(end_time)
 
-def calculateBusinessTime():
+    diff = calculateBusinessTime(startParsed, endParsed)
+    return 'diff in seconds is: {}'.format(diff)
+
+def calculateBusinessTime(start, end):
 
     # Define a working day
     workday = businesstimedelta.WorkDayRule(
@@ -26,10 +30,12 @@ def calculateBusinessTime():
     holidays = businesstimedelta.HolidayRule(sa_holidays)
     businesshrs = businesstimedelta.Rules([workday, holidays])
 
-    # Thursday 24 September 2020 was a public holiday in South Africa
-    start = datetime.datetime(2020, 9, 23, 8, 0, 0)
-    end = datetime.datetime(2020, 9, 25, 17, 0, 0)
+    start = datetime.datetime(start.year, start.month, start.day, start.hour, start.minute, start.second)
+    end = datetime.datetime(end.year, end.month, end.day, end.hour, end.minute, end.second)
 
     bhours = businesshrs.difference(start, end).hours
+    bseconds = businesshrs.difference(start, end).seconds
 
-    return bhours
+    tsecs = (bhours*60*60) + (bseconds)
+
+    return tsecs
