@@ -6,6 +6,8 @@ flask api that runs in google cloud functions for recomed recruitment assignment
 * Done: calculate business time with https://pypi.org/project/businesstimedelta/
 * Done: figured out ISO-8601 date comparison and processing with python dateutil. 
 
+* TODO: test with partial seconds
+* TODO: make sure only GET requests are accepted
 * TODO: automated testing
 * TODO: automated deployment
 * TODO: Authentication (will be nice to have)
