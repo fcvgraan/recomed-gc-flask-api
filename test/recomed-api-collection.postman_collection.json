@@ -1,0 +1,437 @@
+{
+	"info": {
+		"_postman_id": "a474dbd9-0a08-44f8-94f7-905a0cfec16d",
+		"name": "recomed-api-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "7 days including weekend and public holiday",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f5d46c7-353d-41e3-a465-e268e79abd65",
+						"exec": [
+							"pm.test(\"7 days including weekend and public holiday\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"162000\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-18T08:00:00.000Z&end_time=2020-09-25T17:00:00.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-18T08:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-25T17:00:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1 exact work day 08h00 to 17h00",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f179f80b-1139-44c5-a480-e7c4d8a545f2",
+						"exec": [
+							"pm.test(\"1 exact work day 08h00 to 17h00\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"32400\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T08:00:00.000Z&end_time=2020-09-21T17:00:00.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T08:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T17:00:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1 work day 07h00 to 17h00",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d250785d-995f-432d-ae09-91df8628cc6f",
+						"exec": [
+							"pm.test(\"1 work day 07h00 to 17h00\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"32400\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T07:00:00.000Z&end_time=2020-09-21T17:00:00.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T07:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T17:00:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1 work day 07h00 to 18h00",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c69f6aa6-ea7e-4b8b-80d7-5dbb7700e86d",
+						"exec": [
+							"pm.test(\"1 work day 07h00 to 18h00\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"32400\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T07:00:00.000Z&end_time=2020-09-21T18:00:00.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T07:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T18:00:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1 work day 09h00 to 16h00",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4df4b7d5-a1ec-4bd8-a744-3b51375512ac",
+						"exec": [
+							"pm.test(\"1 work day 09h00 to 16h00\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"25200\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T09:00:00.000Z&end_time=2020-09-21T16:00:00.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T09:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T16:00:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "15 seconds during business hours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c403c15b-2099-4e98-af2e-9ffa562ebce9",
+						"exec": [
+							"pm.test(\"15 seconds during business hours\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"15\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T09:00:00.000Z&end_time=2020-09-21T09:00:15.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T09:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T09:00:15.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "15 minutes during business hours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e46d8f5d-ca1b-4fb4-b88d-864480c210ee",
+						"exec": [
+							"pm.test(\"15 minutes during business hours\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"900\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T09:00:00.000Z&end_time=2020-09-21T09:15:00.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T09:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T09:15:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "15 seconds outside of business hours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1c0f105c-edf0-4417-92c1-ad0ba88bd99b",
+						"exec": [
+							"pm.test(\"15 seconds outside of business hours\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"0\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T07:00:00.000Z&end_time=2020-09-21T07:00:15.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T07:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T07:00:15.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "15 minutes outside of business hours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c4a259cf-825a-4a87-8624-56c9175fcbe1",
+						"exec": [
+							"pm.test(\"15 minutes outside of business hours\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"0\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T07:00:00.000Z&end_time=2020-09-21T07:15:00.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T07:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T07:15:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "06d2bb9a-e55f-431e-b124-98ce9a7c4fd8",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "99d9d036-7a45-484d-9164-35ba6cdd3c7c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
