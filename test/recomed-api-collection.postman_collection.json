@@ -6,14 +6,14 @@
 	},
 	"item": [
 		{
-			"name": "7 days including weekend and public holiday",
+			"name": "8 days including weekend and public holiday",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"id": "8f5d46c7-353d-41e3-a465-e268e79abd65",
 						"exec": [
-							"pm.test(\"7 days including weekend and public holiday\", function () {",
+							"pm.test(\"8 days including weekend and public holiday\", function () {",
 							"    pm.response.to.have.status(200);",
 							"    pm.expect(pm.response.text()).to.eql(\"162000\");",
 							"});"
@@ -321,6 +321,51 @@
 			"response": []
 		},
 		{
+			"name": "15 minutes during business hours on a public holiday",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a582619-3f24-4391-8316-75f460cf3b2a",
+						"exec": [
+							"pm.test(\"15 minutes during business hours\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"0\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-12-25T09:00:00.000Z&end_time=2020-12-25T09:15:00.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-12-25T09:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-12-25T09:15:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "15 seconds outside of business hours",
 			"event": [
 				{
@@ -411,6 +456,51 @@
 			"response": []
 		},
 		{
+			"name": "future dates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "85aee432-a0b8-4372-910f-683174e52a01",
+						"exec": [
+							"pm.test(\"future dates\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"900\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2021-09-21T09:00:00.000Z&end_time=2021-09-21T09:15:00.000Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2021-09-21T09:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2021-09-21T09:15:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "fraction of a second during business hours",
 			"event": [
 				{
@@ -494,6 +584,86 @@
 						{
 							"key": "end_time",
 							"value": "2020-09-21T07:00:00.123Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check that parameters are populated",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "70fca6c8-d482-49ff-a3db-61b539fb55d9",
+						"exec": [
+							"pm.test(\"check that parameters are populated\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"Parameters are missing, please provide start_time and end_time in ISO-8601 format\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check that parameters contain valid date string",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfd2f645-1e65-4916-b2d1-c241dda89039",
+						"exec": [
+							"pm.test(\"check that parameters contain valid date string\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"start_time or end_time is not a valid date string. Please provide them in ISO-8601 format\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=xxx&end_time=yyy",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "xxx"
+						},
+						{
+							"key": "end_time",
+							"value": "yyy"
 						}
 					]
 				}
