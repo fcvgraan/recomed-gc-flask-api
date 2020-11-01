@@ -1,24 +1,9 @@
-PROJECT_ID="recomed-gc-python-api-v1"
-PROJECT_NAME="recomed-gc-python-api"
-
-gcloud projects create $PROJECT_ID \
-  --name="$PROJECT_NAME" \
-  --set-as-default
+gcloud projects create recomed-gc-python-api-v1 --name=recomed-gc-python-api --set-as-default
 
 BILLING_ACCOUNT=$(gcloud beta billing accounts list --format 'value(name)' --filter=open=true)
-gcloud beta billing projects link $PROJECT_ID \
-  --billing-account $BILLING_ACCOUNT
+gcloud beta billing projects link create recomed-gc-python-api-v1 --billing-account $BILLING_ACCOUNT
 
 gcloud services enable cloudfunctions.googleapis.com
 gcloud services enable cloudbuild.googleapis.com  
 
-GCF_NAME="calculate-business-seconds"
-GCF_ENTRY="http_trigger"
-GCF_REGION="europe-west1"
-
-gcloud functions deploy $GCF_NAME \
-  --entry-point $GCF_ENTRY \
-  --region $GCF_REGION \
-  --runtime python37 \
-  --trigger-http \
-  --allow-unauthenticated
+gcloud functions deploy calculate-business-seconds --entry-point http_trigger --region europe-west1 --runtime python37 --trigger-http --allow-unauthenticated
