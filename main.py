@@ -29,7 +29,7 @@ def http_trigger(request):
             
     
     else:
-        return 'Request method is ' + str(request.method) + ', only GET is allowed'
+        return 'Request method is {}, only GET is allowed'.format(request.method)
 
 def calculate_business_time(start, end):
 
