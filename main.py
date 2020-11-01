@@ -13,16 +13,16 @@ def http_trigger(request):
         start_time = request.args.get('start_time')
         end_time = request.args.get('end_time')
 
-        startParsed = dateutil.parser.parse(start_time)
-        endParsed = dateutil.parser.parse(end_time)
+        start_time_parsed = dateutil.parser.parse(start_time)
+        end_time_parsed = dateutil.parser.parse(end_time)
 
-        diff = calculateBusinessTime(startParsed, endParsed)
-        return str(diff)
+        business_seconds = calculate_business_time(start_time_parsed, end_time_parsed)
+        return str(business_seconds)
     
     else:
         return 'Request method is ' + str(request.method) + ', only GET is allowed'
 
-def calculateBusinessTime(start, end):
+def calculate_business_time(start, end):
 
     # Define a working day
     workday = businesstimedelta.WorkDayRule(
@@ -34,12 +34,12 @@ def calculateBusinessTime(start, end):
     holidays = businesstimedelta.HolidayRule(sa_holidays)
     businesshrs = businesstimedelta.Rules([workday, holidays])
 
-    start = datetime.datetime(start.year, start.month, start.day, start.hour, start.minute, start.second)
-    end = datetime.datetime(end.year, end.month, end.day, end.hour, end.minute, end.second)
+    startDateTime = datetime.datetime(start.year, start.month, start.day, start.hour, start.minute, start.second)
+    endDateTime = datetime.datetime(end.year, end.month, end.day, end.hour, end.minute, end.second)
 
-    bhours = businesshrs.difference(start, end).hours
-    bseconds = businesshrs.difference(start, end).seconds
+    business_hours = businesshrs.difference(startDateTime, endDateTime).hours
+    business_seconds = businesshrs.difference(startDateTime, endDateTime).seconds
 
-    tsecs = (bhours*60*60) + (bseconds)
+    total_seconds = (business_hours*60*60) + (business_seconds)
 
-    return tsecs
+    return total_seconds

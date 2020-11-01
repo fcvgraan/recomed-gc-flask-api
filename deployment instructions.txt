@@ -1,0 +1,6 @@
+This project was designed to run as a Google Cloud Function. To easily deploy the code, you need the Google Cloud SDK
+
+Download Cloud SDK for Linux, Windows or Mac: https://cloud.google.com/sdk/docs/install and follow the instructions to initialize it on your OS.
+
+The SDK offers platform agnostic functionality via CLI (Command Line Interface). The script deploy.sh will create a new Google Cloud project
+with default settings and deploy the Python code in this project as a cloud function running with Python 3.7
