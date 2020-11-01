@@ -16,7 +16,7 @@ def http_trigger(request):
     endParsed = dateutil.parser.parse(end_time)
 
     diff = calculateBusinessTime(startParsed, endParsed)
-    return 'diff in seconds is: {}'.format(diff)
+    return str(diff)
 
 def calculateBusinessTime(start, end):
 
