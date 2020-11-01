@@ -9,14 +9,18 @@ def http_trigger(request):
     Arg: request (flask.Request)
     Res: arg(s) for flask.make_response
     """
-    start_time = request.args.get('start_time')
-    end_time = request.args.get('end_time')
+    if request.method == 'GET':
+        start_time = request.args.get('start_time')
+        end_time = request.args.get('end_time')
 
-    startParsed = dateutil.parser.parse(start_time)
-    endParsed = dateutil.parser.parse(end_time)
+        startParsed = dateutil.parser.parse(start_time)
+        endParsed = dateutil.parser.parse(end_time)
 
-    diff = calculateBusinessTime(startParsed, endParsed)
-    return str(diff)
+        diff = calculateBusinessTime(startParsed, endParsed)
+        return str(diff)
+    
+    else:
+        return 'Request method is ' + str(request.method) + ', only GET is allowed'
 
 def calculateBusinessTime(start, end):
 

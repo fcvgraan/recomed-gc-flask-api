@@ -5,13 +5,13 @@ flask api that runs in google cloud functions for recomed recruitment assignment
 * Done: figure out public holidays dynamically with https://pypi.org/project/holidays/
 * Done: calculate business time with https://pypi.org/project/businesstimedelta/
 * Done: figured out ISO-8601 date comparison and processing with python dateutil. 
+* Done: automated testing
+* Done: make sure only GET requests are accepted
 
-* TODO: test with partial seconds
-* TODO: make sure only GET requests are accepted
-* TODO: automated testing
+
 * TODO: automated deployment
-* TODO: Authentication (will be nice to have)
-* TODO: Persistent storage (will be nice to have
+* TODO: Authentication (will be nice to have, not required)
+* TODO: Persistent storage (will be nice to have, not required)
 
 
 * test url for Friday 18 September 2020 to Friday 25 September 2020 with Thursday 24 September as public holiday, answer must be 45 hours or 162000 seconds 

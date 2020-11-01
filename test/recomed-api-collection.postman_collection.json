@@ -409,6 +409,276 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "fraction of a second during business hours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a7d5a8ae-fa58-4a43-8ea6-b4041e675cf6",
+						"exec": [
+							"pm.test(\"fraction of a second during business hours\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"0\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T09:00:00.000Z&end_time=2020-09-21T09:00:00.123Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T09:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T09:00:00.123Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fraction of a second outside of business hours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "898e9d96-3fdb-4883-b7fa-e3a1bf8732fa",
+						"exec": [
+							"pm.test(\"fraction of a second outside of business hours\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"0\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T07:00:00.000Z&end_time=2020-09-21T07:00:00.123Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T07:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T07:00:00.123Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST request cannot be allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c5360df-69f3-4cad-9944-5a615e2500c0",
+						"exec": [
+							"pm.test(\"POST request cannot be allowed\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"Request method is POST, only GET is allowed\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T07:00:00.000Z&end_time=2020-09-21T07:00:00.123Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T07:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T07:00:00.123Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT request cannot be allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "648ce065-4724-4996-a530-d2fe89053220",
+						"exec": [
+							"pm.test(\"PUT request cannot be allowed\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"Request method is PUT, only GET is allowed\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T07:00:00.000Z&end_time=2020-09-21T07:00:00.123Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T07:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T07:00:00.123Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE request cannot be allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1436d783-654b-42f1-8824-45266e6c176d",
+						"exec": [
+							"pm.test(\"DELETE request cannot be allowed\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"Request method is DELETE, only GET is allowed\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T07:00:00.000Z&end_time=2020-09-21T07:00:00.123Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T07:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T07:00:00.123Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH request cannot be allowed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "227f5ded-3fed-4b19-89e1-cccdae5cba6d",
+						"exec": [
+							"pm.test(\"PATCH request cannot be allowed\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response.text()).to.eql(\"Request method is PATCH, only GET is allowed\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "https://europe-west2-recomed-294109.cloudfunctions.net/calculate-business-seconds?start_time=2020-09-21T07:00:00.000Z&end_time=2020-09-21T07:00:00.123Z",
+					"protocol": "https",
+					"host": [
+						"europe-west2-recomed-294109",
+						"cloudfunctions",
+						"net"
+					],
+					"path": [
+						"calculate-business-seconds"
+					],
+					"query": [
+						{
+							"key": "start_time",
+							"value": "2020-09-21T07:00:00.000Z"
+						},
+						{
+							"key": "end_time",
+							"value": "2020-09-21T07:00:00.123Z"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
