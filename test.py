@@ -6,31 +6,20 @@ import pytz
 
 work_day_start_hour = 8
 work_day_end_hour = 17
-sa_holidays = pyholidays.ZA()
 
-def http_trigger(request):
-    """ HTTP Cloud Function
-    Arg: request (flask.Request)
-    Res: arg(s) for flask.make_response
-    """
-    if request.method == 'GET':
-        start_time = request.args.get('start_time')
-        end_time = request.args.get('end_time')
 
-        if start_time == None or end_time == None:
-            return 'Parameters are missing, please provide start_time and end_time in ISO-8601 format'
-        else:
-            try: 
-                start_time_parsed = dateutil.parser.parse(start_time).replace(tzinfo=None)
-                end_time_parsed = dateutil.parser.parse(end_time).replace(tzinfo=None)
+def http_trigger2():
 
-                business_seconds = calculate_business_time(start_time_parsed, end_time_parsed)
-                return str(business_seconds)
+    start_time='2020-09-18T08:00:00.000Z'
+    end_time='2020-09-25T17:00:00.000Z'
+ 
+    start_time_parsed = dateutil.parser.parse(start_time).replace(tzinfo=None)
+    end_time_parsed = dateutil.parser.parse(end_time).replace(tzinfo=None)
 
-            except ValueError:
-                return 'start_time or end_time is not a valid date string. Please provide them in ISO-8601 format'
-    else:
-        return 'Request method is {}, only GET is allowed'.format(request.method)
+    business_seconds = calculate_business_time(start_time_parsed, end_time_parsed)
+
+    print(business_seconds)
+                
 
 def celculate_delta(start, day_end, end, day_start):
     
@@ -96,3 +85,6 @@ def calculate_business_time(start, end):
             if day == period.days + 1:
                 seconds += celculate_delta(None, None, end, work_day_start)
         return int(seconds)
+
+
+http_trigger2()
